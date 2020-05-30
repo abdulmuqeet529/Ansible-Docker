@@ -1,0 +1,12 @@
+- name: Scheduling weekly reboot of remote server
+  hosts: all
+  tasks:
+    - cron:
+        name: "weekly_reboot"
+        user: "root"
+        hour: "23"
+        minute: "30"
+        weekday: "6"
+        job: "shutdown -r now"
+        state: present
+...
